@@ -5,8 +5,10 @@
 # SilenceSlash
 
 > Automated silence detection and cutting for Adobe Premiere Pro.  
-> Made with love by Param Dholakia.
+> Made with Love by Param Dholakia.
 
+[![Buy me a Tea](https://img.shields.io/badge/Buy%20me%20a%20Tea-Param%20Dholakia-orange.svg)](https://buymeatea.in/paramdholakia)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Param%20Dholakia-ff5e5b.svg)](https://ko-fi.com/paramdholakia)
 [![CI](https://github.com/paramdholakia/SilenceSlash/actions/workflows/ci.yml/badge.svg)](https://github.com/paramdholakia/SilenceSlash/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node: v18+](https://img.shields.io/badge/node-v18+-green.svg)](https://nodejs.org/)
@@ -160,10 +162,34 @@ npm run package
 
 ---
 
+## Support & Donations
+
+If SilenceSlash saves you time and cuts your video editing hours, consider supporting ongoing open-source development:
+
+- **India / UPI**: [Buy me a Tea (buymeatea.in/paramdholakia)](https://buymeatea.in/paramdholakia)
+- **International**: [Support on Ko-fi (ko-fi.com/paramdholakia)](https://ko-fi.com/paramdholakia)
+
+Every contribution helps keep SilenceSlash completely free, independent, and open-source for video editors everywhere.
+
+---
+
 ## Contributing
 
 We welcome community contributions! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for instructions on environment setup, testing, and clean-room policy.
 
+---
+
+## Author & Attribution
+
+SilenceSlash is designed, developed, and maintained with Love by **Param Dholakia**.
+
+- GitHub: [@paramdholakia](https://github.com/paramdholakia)
+- Buy me a Tea: [buymeatea.in/paramdholakia](https://buymeatea.in/paramdholakia)
+- Ko-fi: [ko-fi.com/paramdholakia](https://ko-fi.com/paramdholakia)
+
+---
+
 ## License
 
 SilenceSlash is licensed under the [MIT License](LICENSE).
+

@@ -7,6 +7,8 @@ function printUsage() {
   console.log(`
 SilenceSlash CLI
 Automatic Silence Removal & Adobe Premiere Pro Timeline Slasher
+Made with Love by Param Dholakia
+Support: https://buymeatea.in/paramdholakia | https://ko-fi.com/paramdholakia
 
 Usage:
   node engine/cli.js <input-media-file> [options]

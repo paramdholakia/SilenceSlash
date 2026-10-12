@@ -342,3 +342,64 @@ button:disabled {
 input[type="file"] {
   display: none;
 }
+
+/* Footer Credit & Support */
+.footer {
+  margin-top: 16px;
+  padding: 10px 4px 6px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.footer-support {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-color);
+}
+
+.footer-btn svg {
+  flex-shrink: 0;
+}
+
+.footer-btn-tea:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+}
+
+.footer-btn-kofi:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #f87171;
+}
+
+.footer-author {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
+}
+

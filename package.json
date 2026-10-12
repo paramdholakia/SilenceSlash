@@ -19,6 +19,16 @@
   ],
   "author": "Param Dholakia",
   "license": "MIT",
+  "funding": [
+    {
+      "type": "custom",
+      "url": "https://buymeatea.in/paramdholakia"
+    },
+    {
+      "type": "ko-fi",
+      "url": "https://ko-fi.com/paramdholakia"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/paramdholakia/SilenceSlash.git"

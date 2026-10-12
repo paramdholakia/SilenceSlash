@@ -523,3 +523,23 @@ btnExportXml.addEventListener('click', async () => {
 
   showStatus('Premiere Pro XML downloaded! Import via File > Import in Premiere Pro.', 'success');
 });
+
+// External link opener for support and author links
+document.querySelectorAll('.external-link').forEach((el) => {
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    const url = el.getAttribute('data-url') || el.getAttribute('href');
+    if (!url || url === '#') return;
+
+    try {
+      const uxp = require('uxp');
+      if (uxp && uxp.shell && uxp.shell.openExternal) {
+        uxp.shell.openExternal(url);
+        return;
+      }
+    } catch (err) {}
+
+    window.open(url, '_blank');
+  });
+});
+

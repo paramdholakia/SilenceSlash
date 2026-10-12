@@ -967,3 +967,29 @@ if (btnCopyPath) {
     });
   });
 }
+
+// 9. External Link Opener (Buy me a Tea, Ko-fi, GitHub)
+document.querySelectorAll('.external-link').forEach((el) => {
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    const url = el.getAttribute('data-url') || el.getAttribute('href');
+    if (!url || url === '#') return;
+
+    if (window.cep && window.cep.util && window.cep.util.openURLInDefaultBrowser) {
+      window.cep.util.openURLInDefaultBrowser(url);
+    } else if (csInterface && typeof csInterface.openURLInDefaultBrowser === 'function') {
+      csInterface.openURLInDefaultBrowser(url);
+    } else {
+      try {
+        const { exec } = require('child_process');
+        const startCmd = process.platform === 'win32'
+          ? `start "" "${url}"`
+          : (process.platform === 'darwin' ? `open "${url}"` : `xdg-open "${url}"`);
+        exec(startCmd);
+      } catch (err) {
+        window.open(url, '_blank');
+      }
+    }
+  });
+});
+

@@ -630,13 +630,63 @@ input[type="file"] {
   display: none;
 }
 
-/* Footer Credit */
+/* Footer Credit & Support */
 .footer {
   margin-top: 10px;
-  padding: 6px 4px 2px;
+  padding: 8px 4px 4px;
   border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
   text-align: center;
+}
+
+.footer-support {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
   font-size: 10px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.footer-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+.footer-btn svg {
+  flex-shrink: 0;
+}
+
+.footer-btn-tea:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+}
+
+.footer-btn-kofi:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #f87171;
+}
+
+.footer-author {
+  font-size: 9.5px;
   color: var(--text-tertiary);
   letter-spacing: 0.2px;
 }
