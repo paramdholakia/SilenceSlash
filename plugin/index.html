@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SilenceSlash</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="header">
+    <div class="header-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+        <circle cx="6" cy="6" r="3"></circle>
+        <circle cx="6" cy="18" r="3"></circle>
+        <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+        <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+        <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+      </svg>
+      <span>SilenceSlash</span>
+    </div>
+    <span class="badge">Open Source</span>
+  </div>
+
+  <!-- Status Message Alert Box -->
+  <div id="statusBox" class="status-msg"></div>
+
+  <!-- Drag & Drop Zone -->
+  <div id="dropzone" class="dropzone">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <polyline points="17 8 12 3 7 8"></polyline>
+      <line x1="12" y1="3" x2="12" y2="15"></line>
+    </svg>
+    <p><strong>Choose or drop media file</strong></p>
+    <p>MP4, MOV, WAV, MP3, M4A, etc.</p>
+  </div>
+  <input type="file" id="filePicker" accept="video/*,audio/*">
+
+  <!-- File Meta Info Card -->
+  <div id="fileCard" class="file-card">
+    <div class="file-header">
+      <span id="fileName">video.mp4</span>
+      <button id="btnRemoveFile" class="btn-secondary" style="padding: 2px 6px; font-size: 10px; flex: none;">Change</button>
+    </div>
+    <div class="file-meta">
+      <span id="fileDuration">Duration: --:--</span>
+      <span id="fileFps">FPS: 30</span>
+      <span id="fileSampleRate">Rate: 48kHz</span>
+    </div>
+  </div>
+
+  <!-- Detection & Timing Parameters -->
+  <div class="controls-card">
+    <!-- Silence Threshold -->
+    <div class="control-group">
+      <div class="control-label-row">
+        <span class="control-label">Silence Threshold</span>
+        <span id="thresholdVal" class="control-val">-30 dBFS</span>
+      </div>
+      <input type="range" id="thresholdSlider" class="slider" min="-60" max="-10" value="-30" step="1">
+      <div class="range-marks">
+        <span>-60 dB (Very quiet)</span>
+        <span>-30 dB</span>
+        <span>-10 dB (Loud)</span>
+      </div>
+    </div>
+
+    <!-- Minimum Silence Duration -->
+    <div class="control-group">
+      <div class="control-label-row">
+        <span class="control-label">Min Silence Duration</span>
+        <span id="minSilenceVal" class="control-val">500 ms</span>
+      </div>
+      <input type="range" id="minSilenceSlider" class="slider" min="100" max="2000" value="500" step="50">
+      <div class="range-marks">
+        <span>100 ms</span>
+        <span>500 ms</span>
+        <span>2000 ms</span>
+      </div>
+    </div>
+
+    <!-- Speech Padding -->
+    <div class="control-group">
+      <div class="control-label-row">
+        <span class="control-label">Speech Padding (In / Out)</span>
+        <span id="paddingVal" class="control-val">150 ms</span>
+      </div>
+      <input type="range" id="paddingSlider" class="slider" min="0" max="600" value="150" step="25">
+      <div class="range-marks">
+        <span>0 ms (Tight)</span>
+        <span>150 ms</span>
+        <span>600 ms (Gentle)</span>
+      </div>
+    </div>
+
+    <!-- Silence Treatment Mode -->
+    <div class="control-group" style="margin-top: 10px;">
+      <div class="control-label-row">
+        <span class="control-label">Timeline Cutting Mode</span>
+      </div>
+      <select id="treatmentSelect" style="width: 100%; padding: 6px 8px; border-radius: 4px; background: var(--bg-input); color: var(--text-main); border: 1px solid var(--border-color); outline: none;">
+        <option value="ripple-delete">Ripple Delete (Slash silence & close gaps)</option>
+        <option value="cut-around">Cut Around (Slash cuts & leave silence gaps)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="btn-row">
+    <button id="btnAnalyze" class="btn-primary" disabled>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+      <span>Slash Silence</span>
+    </button>
+  </div>
+
+  <!-- Interactive Timeline Preview Card -->
+  <div id="timelineCard" class="timeline-card">
+    <div class="timeline-header">
+      <span style="font-weight: 600; font-size: 12px;">Timeline Cuts Preview</span>
+      <div class="timeline-legend">
+        <div class="legend-item">
+          <div class="legend-color" style="background: var(--retained-color);"></div>
+          <span>Keep</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: var(--cut-color);"></div>
+          <span>Cut</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-bar-wrapper">
+      <canvas id="timelineCanvas" class="timeline-canvas"></canvas>
+    </div>
+
+    <div class="timeline-stats">
+      <div class="stat-box">
+        <div class="stat-label">Original</div>
+        <div id="statOriginal" class="stat-val">0.0s</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Trimmed</div>
+        <div id="statTrimmed" class="stat-val">0.0s</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Saved</div>
+        <div id="statSaved" class="stat-val">0% (0s)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export / Apply Edits -->
+  <div class="btn-row" id="exportRow" style="display: none;">
+    <button id="btnExportXml" class="btn-success">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      <span>Create Slashed Sequence</span>
+    </button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

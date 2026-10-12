@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build and Distribution Artifacts
+dist/
+build/
+*.zip
+*.zxp
+
+# Adobe and CEP Local Configuration
+.debug
+.tmp/
+*.tmp
+*.log
+
+# Audio and Video Media / Test Outputs
+*.xml
+*.fcpxml
+*.edl
+*.mp4
+*.m4a
+*.mp3
+*.wav
+*.raw
+tests/tutorial_test.xml
+test_output.xml
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

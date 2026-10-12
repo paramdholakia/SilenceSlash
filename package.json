@@ -1,0 +1,26 @@
+{
+  "name": "silenceslash",
+  "version": "1.0.0",
+  "description": "Open-source silence removal engine and Adobe Premiere Pro UXP/CEP extension",
+  "main": "engine/index.js",
+  "scripts": {
+    "test": "node --test",
+    "cli": "node engine/cli.js",
+    "package": "node scripts/package.js"
+  },
+  "keywords": [
+    "premiere-pro",
+    "silenceslash",
+    "uxp",
+    "cep",
+    "silence-removal",
+    "ffmpeg",
+    "video-editing"
+  ],
+  "author": "Param Dholakia",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paramdholakia/SilenceSlash.git"
+  }
+}

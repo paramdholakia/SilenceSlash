@@ -1,0 +1,49 @@
+{
+  "id": "com.silenceslash.premiere",
+  "name": "SilenceSlash",
+  "version": "1.0.0",
+  "main": "index.html",
+  "manifestVersion": 5,
+  "host": [
+    {
+      "app": "PPRO",
+      "minVersion": "15.0.0"
+    }
+  ],
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "silenceSlashPanel",
+      "label": {
+        "default": "SilenceSlash"
+      },
+      "minimumSize": {
+        "width": 320,
+        "height": 450
+      },
+      "maximumSize": {
+        "width": 1200,
+        "height": 1000
+      },
+      "preferredDockedSize": {
+        "width": 400,
+        "height": 600
+      }
+    }
+  ],
+  "icons": [
+    {
+      "width": 23,
+      "height": 23,
+      "path": "icons/icon-light.png",
+      "scale": [1, 2],
+      "theme": ["light", "dark"]
+    }
+  ],
+  "requiredPermissions": {
+    "localFileSystem": "fullAccess",
+    "network": {
+      "domains": "all"
+    }
+  }
+}
